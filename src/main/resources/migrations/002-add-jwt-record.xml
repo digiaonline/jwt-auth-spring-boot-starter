@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="1" author="Stephane Weiss">
+		<createTable tableName="jwt_record">
+			<column name="jti" type="VARCHAR(255)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+
+			<column name="subject" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="expiration" type="DATETIME">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="created_at" type="DATETIME" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="2" author="Stephane Weiss">
+		<createIndex indexName="idx_subject" tableName="jwt_record"
+			unique="false">
+			<column name="subject" type="VARCHAR(255)" />
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>

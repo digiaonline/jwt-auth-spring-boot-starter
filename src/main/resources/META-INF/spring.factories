@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.starcut.auth.jwt.configuration.JwtAuthAutoConfiguration,\
+  com.starcut.auth.jwt.authentication.JwtAuthorizationProvider,\
+  org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration,\
+  org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
